@@ -2,7 +2,7 @@ const Contenedor = require ('./contenedor.js')
 
 /* const { response } = require("express"); */
 const express = require("express")
-const { json } = require('express')
+/* const { json } = require('express') */
 
 const app = express()
  const PORT = process.env.PORT || 8080 
