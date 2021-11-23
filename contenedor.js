@@ -8,9 +8,9 @@ class Contenedor {
 
     static countId = 0
     static file = "produto.json"
-    static lista = [{hola:"hokla"}]
+    static lista = []
 
-/*     //metodo save: recibe un objeto, lo guarda y devuelve el id asignado
+    //metodo save: recibe un objeto, lo guarda y devuelve el id asignado
     async save (objeto) {
         Contenedor.countId++;
         objeto["id"] = Contenedor.countId
@@ -20,18 +20,18 @@ class Contenedor {
         await this.write()
 
         return Contenedor.countId;
-    } */
+    } 
 
 
-/*     //metodo deleteById : elimina del archivo el objeto con el id buscado.
+     //metodo deleteById : elimina del archivo el objeto con el id buscado.
     async deleteById(id){
 
         Contenedor.lista = Contenedor.lista.filter(element => element.id != id)
 
         await this.write()
-    } */
+    } 
 
-/*     //metodo deleteAll : elimina todos los objetos presentes.
+    //metodo deleteAll : elimina todos los objetos presentes.
     async deleteAll(){
 
         fs.unlink("./contenedor.json", error =>{
@@ -42,7 +42,7 @@ class Contenedor {
             }
         })
 
-            } */
+            } 
 
     async write(){
 
@@ -56,25 +56,25 @@ class Contenedor {
         return Contenedor.lista;
         }
 
-/* 
+
         //metodo getById : recibe un id y devuelve el objeto con ese id
         async getById(id){
 
             Contenedor.lista = Contenedor.lista.filter(element => element.id == id)
     
             console.log(Contenedor.lista);
-        } */
+        } 
 
     async init(){
         try {
             let data = await fs.promises.readFile(Contenedor.file)
             Contenedor.lista = JSON.parse(data)
     
-/*             for (const element of Contenedor.lista){
+            for (const element of Contenedor.lista){
                 if(element.id > Contenedor.countId) 
                 Contenedor.countId = element.id
             }
-            console.log("Last ID: ", Contenedor.countId)  */
+            console.log("Last ID: ", Contenedor.countId) 
         } catch (error){
             console.log("Aun no hay archivo");
         }

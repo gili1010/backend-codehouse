@@ -1,24 +1,38 @@
 const Contenedor = require ('./contenedor.js')
 
-const { response } = require("express");
+/* const { response } = require("express"); */
 const express = require("express")
+const { json } = require('express')
 
 const app = express()
-const PORT = 8080
+ const PORT = process.env.PORT || 8080 
 
-let file = "produto.json"
-let lista = []
 
-/* .listen(process.env.PORT || 8080) */
-app.listen(process.env.PORT || PORT , () => {
+app.listen(PORT, () => {
     console.log(`servidor corriendo en ${PORT}`);
 })
 
  app.get ('/', (request, response) =>{
-    response.send("Hola a todos")
+    
+        const cc =new Contenedor()
+        cc.init() 
+    
+        let lista = cc.getAll()
 
+    response.json(lista)
 })
 
 app.get ('/productoramdon', (request, response) =>{
-    response.send("Hola a todos soy ramdon")
+    const cc =new Contenedor()
+    cc.init() 
+
+    let lista = cc.getAll()
+
+    let min = 1;
+    let max = 3;
+
+    let x = Math.floor(Math.random()*(max-min+1)+min);
+
+    response.json(lista.find(element => element.id === x))
 })
+
